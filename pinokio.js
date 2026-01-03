@@ -1,8 +1,8 @@
 const path = require('path')
 module.exports = {
-  version: "3.7",
+  version: "5.0",
   title: "DiffRhythm_2",
-  description: "",
+  description: "Diffusion-based rhythm generation with DiffRhythm2 model",
   icon: "icon.png",
   menu: async (kernel, info) => {
     let installed = info.exists("app/env")
