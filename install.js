@@ -1,18 +1,20 @@
 module.exports = {
   run: [
-    // Clone the DiffRhythm2 repository
+    // Edit this step to customize the git repository to use
     {
       method: "shell.run",
       params: {
-        message: "git clone https://huggingface.co/spaces/ASLP-lab/DiffRhythm2 app"
+        message: [
+          "git clone https://huggingface.co/spaces/ASLP-lab/DiffRhythm2 app",
+        ]
       }
     },
-    // Install all dependencies from requirements.txt first
+    // Edit this step with your custom install commands
     {
       method: "shell.run",
       params: {
-        venv: "app/env",
-        path: "app",
+        venv: "env",                // Edit this to customize the venv folder path
+        path: "app",                // Edit this to customize the path to start the shell from
         message: [
           "uv pip install -r requirements.txt",
           "uv pip install gradio==4.44.0",
@@ -20,18 +22,20 @@ module.exports = {
         ]
       }
     },
-    // Install torch with CUDA support at the end (includes xformers and triton)
+    // Delete this step if your project does not use torch
     {
       method: "script.start",
       params: {
         uri: "torch.js",
         params: {
-          venv: "app/env",
-          path: "app",
-          xformers: true,
-          triton: true
+          venv: "env",                // Edit this to customize the venv folder path
+          path: "app",                // Edit this to customize the path to start the shell from
+          // flashattention: true   // uncomment this line if your project requires flashattention
+          // xformers: true   // uncomment this line if your project requires xformers
+          // triton: true   // uncomment this line if your project requires triton
+          // sageattention: true   // uncomment this line if your project requires sageattention
         }
       }
-    }
+    },	
   ]
 }
