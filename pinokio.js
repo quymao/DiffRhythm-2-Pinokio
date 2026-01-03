@@ -5,7 +5,7 @@ module.exports = {
   description: "Diffusion-based rhythm generation with DiffRhythm2 model",
   icon: "icon.png",
   menu: async (kernel, info) => {
-    let installed = info.exists("app/env")
+    let installed = info.exists("app/app/env")
     let running = {
       install: info.running("install.js"),
       start: info.running("start.js"),
